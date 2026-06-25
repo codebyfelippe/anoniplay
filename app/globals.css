@@ -1,0 +1,198 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+:root {
+  --background: 240 10% 3.9%;
+  --foreground: 0 0% 98%;
+  --card: 240 10% 3.9%;
+  --card-foreground: 0 0% 98%;
+  --popover: 240 10% 3.9%;
+  --popover-foreground: 0 0% 98%;
+  --primary: 0 0% 98%;
+  --primary-foreground: 240 5.9% 10%;
+  --secondary: 240 3.7% 15.9%;
+  --secondary-foreground: 0 0% 98%;
+  --muted: 240 3.7% 15.9%;
+  --muted-foreground: 240 5% 64.9%;
+  --accent: 240 3.7% 15.9%;
+  --accent-foreground: 0 0% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 240 3.7% 15.9%;
+  --input: 240 3.7% 15.9%;
+  --ring: 346.8 77.2% 49.8%;
+  --radius: 0.75rem;
+  --sb-thumb: rgba(255, 255, 255, 0.18);
+  --sb-thumb-hover: rgba(255, 255, 255, 0.28);
+  --sb-track: transparent;
+}
+
+.dark {
+  --background: 240 10% 3.9%;
+  --foreground: 0 0% 98%;
+  --card: 240 10% 3.9%;
+  --card-foreground: 0 0% 98%;
+  --popover: 240 10% 3.9%;
+  --popover-foreground: 0 0% 98%;
+  --primary: 0 0% 98%;
+  --primary-foreground: 240 5.9% 10%;
+  --secondary: 240 3.7% 15.9%;
+  --secondary-foreground: 0 0% 98%;
+  --muted: 240 3.7% 15.9%;
+  --muted-foreground: 240 5% 64.9%;
+  --accent: 240 3.7% 15.9%;
+  --accent-foreground: 0 0% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 240 3.7% 15.9%;
+  --input: 240 3.7% 15.9%;
+  --ring: 346.8 77.2% 49.8%;
+}
+}
+
+@layer base {
+* {
+  @apply border-border;
+}
+body {
+  @apply bg-background text-foreground;
+  font-family: 'Poppins', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+}
+
+/* Clean, minimal scrollbar theme */
+@layer base {
+html, body {
+  scrollbar-width: thin;                    /* Firefox */
+  scrollbar-color: var(--sb-thumb) var(--sb-track);
+}
+html::-webkit-scrollbar {
+  width: 10px;                              /* Vertical */
+  height: 10px;                             /* Horizontal */
+}
+html::-webkit-scrollbar-track {
+  background: var(--sb-track);
+}
+html::-webkit-scrollbar-thumb {
+  background-color: var(--sb-thumb);
+  border-radius: 9999px;
+  border: 2px solid transparent;            /* Creates the "pill" with inner padding */
+  background-clip: padding-box;
+}
+html:hover::-webkit-scrollbar-thumb {
+  background-color: var(--sb-thumb-hover);
+}
+}
+
+/* Utility class for any scroll container */
+@layer utilities {
+.scrollbar-clean {
+  scrollbar-width: thin;
+  scrollbar-color: var(--sb-thumb) var(--sb-track);
+}
+.scrollbar-clean::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+.scrollbar-clean::-webkit-scrollbar-track {
+  background: var(--sb-track);
+}
+.scrollbar-clean::-webkit-scrollbar-thumb {
+  background-color: var(--sb-thumb);
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+.scrollbar-clean:hover::-webkit-scrollbar-thumb {
+  background-color: var(--sb-thumb-hover);
+}
+}
+/* app/globals.css */
+
+/* ... (seu código existente) ... */
+
+@layer utilities {
+  .text-shadow {
+    text-shadow: 0 1px 3px rgb(0 0 0 / 0.5);
+  }
+  .text-shadow-lg {
+    text-shadow: 0 2px 5px rgb(0 0 0 / 0.6);
+  }
+}
+
+/* Adicionado para correções no player */
+.video-player-container:fullscreen {
+  width: 100vw;
+  height: 100vh;
+}
+
+.video-player-container:-webkit-full-screen {
+  width: 100vw;
+  height: 100vh;
+}
+
+/* --- INÍCIO DAS MODIFICAÇÕES --- */
+@layer components {
+  /* Animação de carregamento (substitui o GIF) */
+  .loading-bars {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 50px;
+  }
+  .loading-bar {
+    width: 10px;
+    height: 50px;
+    margin: 0 3px;
+    /* Cor ciano (como no vídeo) */
+    background-color: #00BFFF; 
+    animation: loading-bar-anim 1.2s infinite ease-in-out;
+  }
+  .loading-bar:nth-child(1) { animation-delay: -0.4s; }
+  .loading-bar:nth-child(2) { animation-delay: -0.3s; }
+  .loading-bar:nth-child(3) { animation-delay: -0.2s; }
+  .loading-bar:nth-child(4) { animation-delay: -0.1s; }
+  .loading-bar:nth-child(5) { animation-delay: 0s; }
+
+  @keyframes loading-bar-anim {
+    0%, 40%, 100% {
+      transform: scaleY(0.4);
+    }
+    20% {
+      transform: scaleY(1.0);
+    }
+  }
+
+  /* Spinner antigo (mantido caso seja usado em outro lugar) */
+  .custom-spinner {
+    width: 96px; 
+    height: 96px;
+    border-radius: 50%;
+    position: relative;
+    animation: rotate 1s linear infinite;
+    border-top: 6px solid rgba(0, 191, 255, 0.2);
+    border-right: 6px solid rgba(0, 191, 255, 0.2);
+    border-bottom: 6px solid rgba(0, 191, 255, 0.2);
+    border-left: 6px solid #00BFFF;
+  }
+
+  @keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  /* Estilos para a barra de progresso fina */
+  .thin-slider .group-hover\/progress\:h-1\.5 { height: 0.375rem !important; }
+  .thin-slider .h-1\.5 { height: 0.375rem !important; }
+  .thin-slider .h-1 { height: 0.25rem !important; }
+  .thin-slider .h-3 { height: 0.75rem !important; width: 0.75rem !important; }
+  .thin-slider .group-hover\/progress\:h-3\.5 { height: 0.875rem !important; width: 0.875rem !important; }
+}
+/* --- FIM DAS MODIFICAÇÕES --- */
