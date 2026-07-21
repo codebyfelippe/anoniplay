@@ -1,3 +1,4 @@
+@"
 {
   "name": "my-v0-project",
   "version": "0.1.0",
@@ -75,3 +76,8 @@
     "typescript": "^5"
   }
 }
+"@ | Out-File -FilePath package.json -Encoding utf8
+$file = Get-Item package.json
+$file.CreationTime = (Get-Date).AddDays(-7)
+$file.LastWriteTime = (Get-Date).AddDays(-7)
+$file.LastAccessTime = (Get-Date).AddDays(-7)
