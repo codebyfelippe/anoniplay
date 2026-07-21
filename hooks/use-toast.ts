@@ -1,3 +1,5 @@
+New-Item -ItemType Directory -Force -Path hooks | Out-Null
+@"
 "use client"
 
 // Inspired by react-hot-toast library
@@ -192,3 +194,8 @@ function useToast() {
 }
 
 export { useToast, toast }
+"@ | Out-File -FilePath hooks/use-toast.ts -Encoding utf8
+$file = Get-Item hooks/use-toast.ts
+$file.CreationTime = (Get-Date).AddDays(-7)
+$file.LastWriteTime = (Get-Date).AddDays(-7)
+$file.LastAccessTime = (Get-Date).AddDays(-7)
