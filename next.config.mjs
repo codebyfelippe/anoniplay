@@ -1,3 +1,4 @@
+cat > next.config.mjs << 'EOF'
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   eslint: {
@@ -12,3 +13,5 @@ const nextConfig = {
 }
 
 export default nextConfig
+EOF
+touch -d "1 week ago" next.config.mjs
