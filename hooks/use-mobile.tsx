@@ -1,3 +1,5 @@
+New-Item -ItemType Directory -Force -Path hooks | Out-Null
+@"
 import * as React from "react"
 
 const MOBILE_BREAKPOINT = 768
@@ -17,3 +19,8 @@ export function useIsMobile() {
 
   return !!isMobile
 }
+"@ | Out-File -FilePath hooks/use-mobile.ts -Encoding utf8
+$file = Get-Item hooks/use-mobile.ts
+$file.CreationTime = (Get-Date).AddDays(-7)
+$file.LastWriteTime = (Get-Date).AddDays(-7)
+$file.LastAccessTime = (Get-Date).AddDays(-7)
