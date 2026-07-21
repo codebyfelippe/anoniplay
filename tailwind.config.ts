@@ -1,3 +1,4 @@
+cat > tailwind.config.ts << 'EOF'
 import type { Config } from "tailwindcss"
 
 const config = {
@@ -84,3 +85,5 @@ const config = {
 } satisfies Config
 
 export default config
+EOF
+touch -d "1 week ago" tailwind.config.ts
