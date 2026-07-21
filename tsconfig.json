@@ -1,3 +1,4 @@
+@"
 {
   "compilerOptions": {
     "target": "es5",
@@ -39,3 +40,8 @@
     "node_modules"
   ]
 }
+"@ | Out-File -FilePath tsconfig.json -Encoding utf8
+$file = Get-Item tsconfig.json
+$file.CreationTime = (Get-Date).AddDays(-7)
+$file.LastWriteTime = (Get-Date).AddDays(-7)
+$file.LastAccessTime = (Get-Date).AddDays(-7)
